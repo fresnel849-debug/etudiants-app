@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestionnaire d'étudiants</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Gestionnaire d'étudiants</h1>
+
+  <div id="alert-zone"></div>
+
+  <div class="toolbar">
+    <input type="text" id="searchInput" placeholder="Rechercher par nom, email, filière..." />
+    <a href="form.html" class="btn-ajouter">+ Ajouter un étudiant</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Filière</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- Données injectées par script.js -->
+    </tbody>
+  </table>
+
+  <!-- ── MODAL MODIFIER ── -->
+  <div id="editModal" class="modal-overlay">
+    <div class="modal">
+      <h2>Modifier l'étudiant</h2>
+
+      <input type="hidden" id="edit-id" />
+
+      <div class="form-group">
+        <label for="edit-nom">Nom</label>
+        <input type="text" id="edit-nom" class="form-input" />
+        <span class="field-error" id="err-edit-nom"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="edit-prenom">Prénom</label>
+        <input type="text" id="edit-prenom" class="form-input" />
+        <span class="field-error" id="err-edit-prenom"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="edit-email">Email</label>
+        <input type="email" id="edit-email" class="form-input" />
+        <span class="field-error" id="err-edit-email"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="edit-telephone">Téléphone</label>
+        <input type="tel" id="edit-telephone" class="form-input" />
+        <span class="field-error" id="err-edit-telephone"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="edit-filiere">Filière</label>
+        <input type="text" id="edit-filiere" class="form-input" />
+        <span class="field-error" id="err-edit-filiere"></span>
+      </div>
+
+      <div class="modal-actions">
+        <button onclick="saveEdit()">Enregistrer</button>
+        <button onclick="closeModal()">Annuler</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MODAL SUPPRIMER ── -->
+  <div id="deleteModal" class="modal-overlay">
+    <div class="modal">
+      <h2>Confirmer la suppression</h2>
+      <p>Voulez-vous vraiment supprimer cet étudiant ?</p>
+      <input type="hidden" id="delete-id" />
+      <div class="modal-actions">
+        <button onclick="confirmDelete()">Supprimer</button>
+        <button onclick="closeDeleteModal()">Annuler</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
